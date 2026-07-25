@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'" />
+  <title>Cove - Player Seat</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body class="seat-body">
+  <header class="seat-header">
+    <span class="seat-title" id="seatTitle">Cove</span>
+    <span class="seat-status seat-status-connecting" id="seatStatus">Connecting…</span>
+    <div class="seat-header-controls">
+      <button id="fitBtn" class="map-popout-ctrl-btn" title="Fit the map to the screen">Fit</button>
+      <button id="claimBtn" class="map-popout-ctrl-btn" title="Pick which token is your character">I'm playing…</button>
+    </div>
+  </header>
+
+  <div class="map-popout-stage seat-stage" id="stage">
+    <div class="map-popout-camera" id="camera"></div>
+    <div class="map-popout-empty" id="empty">Connecting to the DM&hellip;</div>
+  </div>
+
+  <div class="seat-panel" id="panel" hidden></div>
+
+  <div class="seat-claim-overlay" id="claimOverlay" hidden>
+    <div class="seat-claim-card">
+      <h2>Which token is yours?</h2>
+      <p class="seat-claim-hint">Pick your character so this device highlights it and shows its stats. You can change or clear it anytime.</p>
+      <div class="seat-claim-list" id="claimList"></div>
+      <div class="seat-claim-actions">
+        <button id="claimSpectate" class="map-popout-ctrl-btn">Just watching</button>
+        <button id="claimClose" class="map-popout-ctrl-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/seat.js"></script>
+</body>
+</html>
