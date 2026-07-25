@@ -1,0 +1,25 @@
+# Fly.io configuration for the Cove relay.
+# `fly launch --copy-config` (or `fly deploy`) reads this, builds the Dockerfile,
+# and serves it over HTTPS on 443 -> the relay's internal port 8080.
+#
+# Change `app` to your own globally-unique name before deploying.
+app = "my-cove-relay"
+primary_region = "iad"
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  # Set to 1 if you'd rather avoid the ~1s cold start when the first player
+  # connects. 0 lets the machine sleep while idle to save money.
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "5s"
+    method = "GET"
+    path = "/healthz"
